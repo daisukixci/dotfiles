@@ -61,7 +61,7 @@ cd - || exit 1
 mkdir -p "$CONFIG_DIR/nvim"
 cp "${DOTFILES_DIR}/init.vim" "${CONFIG_DIR}/nvim"
 cp "${DOTFILES_DIR}/coc-settings.json" "${CONFIG_DIR}/nvim"
-nvim -c 'CocInstall -sync coc-coc-css coc-coc-diagnostic coc-coc-eslint coc-coc-explorer coc-coc-git coc-coc-go coc-coc-java coc-coc-json coc-coc-prettier coc-coc-pyright coc-coc-sh coc-coc-snippets coc-coc-solargraph coc-coc-tsserver coc-coc-xml coc-coc-yaml|q'
+nvim -c 'CocInstall -sync coc-css coc-diagnostic coc-eslint coc-explorer coc-git coc-go coc-java coc-json coc-prettier coc-pyright coc-sh coc-snippets coc-solargraph coc-tsserver coc-xml coc-yaml|q'
 
 ##### ASDF setup
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
@@ -74,7 +74,7 @@ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/py
 cat <<EOF > "${HOME}/first-run.sh"
 setup-workspace
 setup-repo dogweb
-nvim -c 'Copilot setup|q'
+nvim -c 'Copilot setup'
 git config --global url.git@github.com:.insteadof=https://github.com/"
 EOF
 } > install.log 2>&1
