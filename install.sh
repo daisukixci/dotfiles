@@ -20,6 +20,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 
 cp "${DOTFILES_DIR}/.zshrc" "${HOME}"
 cp "${DOTFILES_DIR}/.p10k.zsh" "${HOME}"
+mkdir -p "${HOME}/.env"
 
 ##### Vim configuration
 cp .vimrc "${HOME}"
