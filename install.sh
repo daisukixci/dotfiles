@@ -11,7 +11,8 @@ echo "VIM_PLUGINS_DIR: $VIM_PLUGINS_DIR"
 apt install -y fzf
 
 ##### Shell configuration
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh > install-oh-my-zsh.sh
+sh install-oh-my-zsh.sh
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
@@ -26,6 +27,7 @@ mkdir -p "${HOME}/.env"
 ##### Vim configuration
 cp .vimrc "${HOME}"
 mkdir -p "$VIM_PLUGINS_DIR"
+cd "$VIM_PLUGINS_DIR" || exit 1
 git clone https://github.com/neoclide/coc.nvim.git
 git clone https://github.com/github/copilot.vim
 git clone https://github.com/morhetz/gruvbox
@@ -46,6 +48,7 @@ git clone https://github.com/rodjek/vim-puppet
 git clone https://github.com/honza/vim-snippets
 git clone https://github.com/hashivim/vim-terraform.git
 git clone https://github.com/vim-test/vim-test.git
+cd - || exit 1
 
 mkdir -p "$CONFIG_DIR/nvim"
 cp "${DOTFILES_DIR}/coc-settings.json" "${CONFIG_DIR}/nvim"
