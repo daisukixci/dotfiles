@@ -78,5 +78,7 @@ fi
 cd - || exit 1
 
 ##### Workspace setup
+cat <<EOF > "${HOME}/first-run.sh"
 setup-workspace
 setup-repo dogweb
+EOF
