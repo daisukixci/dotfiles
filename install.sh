@@ -61,37 +61,7 @@ cd - || exit 1
 mkdir -p "$CONFIG_DIR/nvim"
 cp "${DOTFILES_DIR}/init.vim" "${CONFIG_DIR}/nvim"
 cp "${DOTFILES_DIR}/coc-settings.json" "${CONFIG_DIR}/nvim"
-mkdir -p "$CONFIG_DIR/coc/extensions"
-cd "$CONFIG_DIR/coc/extensions" || exit 1
-if [ ! -f package.json ]
-then
-cat << EOF > package.json
-{
-  "dependencies": {
-    "coc-css": ">=2.0.0",
-    "coc-diagnostic": ">=0.23.4",
-    "coc-git": ">=2.5.3",
-    "coc-java": ">=1.5.5",
-    "coc-json": ">=1.7.0",
-    "coc-go": ">=1.3.0",
-    "coc-pyright": ">=1.1.275",
-    "coc-snippets": ">=3.1.4",
-    "coc-solargraph": ">=1.2.4",
-    "coc-yaml": ">=1.9.0",
-    "coc-explorer": ">=0.25.4",
-    "coc-sh": ">=0.7.0",
-    "coc-xml": ">=1.14.1",
-    "coc-tsserver": ">=2.1.3",
-    "coc-eslint": ">=1.7.0",
-    "coc-prettier": ">=9.3.2"
-  },
-  "lastUpdate": 1713703756777
-}
-EOF
-fi
-extensions=$(jq -r '.dependencies | keys | map("coc-" + .) | join(" ")' package.json)
-yarn install $extensions
-cd - || exit 1
+nvim -c 'CocInstall -sync coc-coc-css coc-coc-diagnostic coc-coc-eslint coc-coc-explorer coc-coc-git coc-coc-go coc-coc-java coc-coc-json coc-coc-prettier coc-coc-pyright coc-coc-sh coc-coc-snippets coc-coc-solargraph coc-coc-tsserver coc-coc-xml coc-coc-yaml|q'
 
 ##### ASDF setup
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
@@ -104,5 +74,7 @@ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/py
 cat <<EOF > "${HOME}/first-run.sh"
 setup-workspace
 setup-repo dogweb
+nvim -c 'Copilot setup|q'
+git config --global url.git@github.com:.insteadof=https://github.com/"
 EOF
 } > install.log 2>&1
