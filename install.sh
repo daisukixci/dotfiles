@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-DOTFILES_DIR=$(pwd)
-CONFIG_DIR=$HOME/.config
+DOTFILES_DIR=${HOME}/dotfiles
+CONFIG_DIR=${HOME}/.config
 VIM_PLUGINS_DIR=$HOME/.vim/pack/plugins/start
 echo "DOTFILES_DIR: $DOTFILES_DIR"
 echo "CONFIG_DIR: $CONFIG_DIR"
@@ -14,9 +14,9 @@ apt install -y fzf
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-git clone https://github.com/zsh-users/zsh-completions "${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-completions "${ZSH_CUSTOM:=${HOME}/.oh-my-zsh/custom}/plugins/zsh-completions"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 
 cp "${DOTFILES_DIR}/.zshrc" "${HOME}"
 cp "${DOTFILES_DIR}/.p10k.zsh" "${HOME}"
