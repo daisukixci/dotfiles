@@ -62,7 +62,8 @@ mkdir -p "$CONFIG_DIR/nvim"
 mkdir -p "$CONFIG_DIR/coc/extensions"
 cp "${DOTFILES_DIR}/init.vim" "${CONFIG_DIR}/nvim"
 cp "${DOTFILES_DIR}/coc-settings.json" "${CONFIG_DIR}/nvim"
-nvim -c 'CocInstall -sync coc-css coc-diagnostic coc-eslint coc-explorer coc-git coc-go coc-java coc-json coc-prettier coc-pyright coc-sh coc-snippets coc-solargraph coc-tsserver coc-xml coc-yaml|q'
+extensions="coc-css coc-diagnostic coc-eslint coc-explorer coc-git coc-go coc-java coc-json coc-prettier coc-pyright coc-sh coc-snippets coc-solargraph coc-tsserver coc-xml coc-yaml"
+nvim --headless +"CocInstall -sync $extensions|qa"
 
 ##### ASDF setup
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
