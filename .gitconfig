@@ -1,6 +1,6 @@
 [core]
 	excludesfile = /Users/gaetan.piquenot/.gitignore
-	hooksPath = /usr/local/dd/global_hooks
+    #hooksPath = /usr/local/dd/global_hooks
 [url "git@github.com:DataDog"]
 	insteadOf = https://github.com/DataDog
 [commit]
@@ -24,7 +24,7 @@
 	rebase = false
 [init]
 	defaultBranch = main
-	hooksPath = /usr/local/dd/global_hooks
+    #hooksPath = /usr/local/dd/global_hooks
 
 [alias]
     # Add a +1 because wc count end of lines but git log doesn't output the last one
