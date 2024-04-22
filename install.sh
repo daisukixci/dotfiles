@@ -56,6 +56,9 @@ git clone https://github.com/honza/vim-snippets
 git clone https://github.com/hashivim/vim-terraform.git
 git clone https://github.com/vim-test/vim-test.git
 cd - || exit 1
+cd "$VIM_PLUGINS_DIR/coc.nvim" || exit 1
+yarn install
+cd - || exit 1
 
 mkdir -p "$CONFIG_DIR/nvim"
 cp "${DOTFILES_DIR}/init.vim" "${CONFIG_DIR}/nvim"
@@ -88,6 +91,7 @@ cat << EOF > package.json
 }
 EOF
 fi
+extensions=$(jq -r '.dependencies | keys | map("coc-" + .) | join(" ")' package.json)
 yarn install $extensions
 cd - || exit 1
 
