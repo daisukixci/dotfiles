@@ -3,9 +3,12 @@
 DOTFILES_DIR=$(pwd)
 CONFIG_DIR=$HOME/.config
 VIM_PLUGINS_DIR=$HOME/.vim/pack/plugins/start
+echo "DOTFILES_DIR: $DOTFILES_DIR"
+echo "CONFIG_DIR: $CONFIG_DIR"
+echo "VIM_PLUGINS_DIR: $VIM_PLUGINS_DIR"
 
 ##### Install packages
-apt install fzf
+apt install -y fzf
 
 ##### Shell configuration
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -19,7 +22,7 @@ cp "${DOTFILES_DIR}/.zshrc" "${HOME}"
 cp "${DOTFILES_DIR}/.p10k.zsh" "${HOME}"
 
 ##### Vim configuration
-cp .vimrc ~
+cp .vimrc "${HOME}"
 mkdir -p "$VIM_PLUGINS_DIR"
 git clone https://github.com/neoclide/coc.nvim.git
 git clone https://github.com/github/copilot.vim
