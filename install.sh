@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+{
 DOTFILES_DIR=${HOME}/dotfiles
 CONFIG_DIR=${HOME}/.config
 VIM_PLUGINS_DIR=$HOME/.vim/pack/plugins/start
@@ -94,3 +95,4 @@ cat <<EOF > "${HOME}/first-run.sh"
 setup-workspace
 setup-repo dogweb
 EOF
+} > install.log 2>&1
