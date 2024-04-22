@@ -15,7 +15,9 @@ sudo apt update
 sudo apt install -y gh fzf neovim python3-neovim
 
 ##### Shell configuration
+set -x
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+set +x
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
@@ -85,7 +87,7 @@ cat << EOF > package.json
 }
 EOF
 fi
-yarn install
+yarn install $extensions
 cd - || exit 1
 
 ##### ASDF setup
