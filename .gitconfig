@@ -1,0 +1,46 @@
+[core]
+	excludesfile = /Users/gaetan.piquenot/.gitignore
+	hooksPath = /usr/local/dd/global_hooks
+[url "git@github.com:DataDog"]
+	insteadOf = https://github.com/DataDog
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[tag]
+	forceSignAnnotated = true
+	gpgSign = true
+	forceSigneAnnoted = true
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILgbG9ikeAc1py6vb1uB7T0zspg/V9sqOWk5ctKF5sVs gaetan.piquenot@awing
+	email = gaetan.piquenot@datadoghq.com
+	name = daisukixci
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+	hooksPath = /usr/local/dd/global_hooks
+
+[alias]
+    # Add a +1 because wc count end of lines but git log doesn't output the last one
+	squash = !git rebase -i HEAD~$(echo $(( $(git log --pretty=format:"%H" origin/master.."$(git log -1  --pretty=format:"%H")" | wc -l) + 1 )))
+    forward = !branch=$(git branch | grep '*' | cut -d' ' -f2) && git checkout master || git checkout main && git pull && git checkout $branch && git rebase master || git rebase main
+    cake = log --date=format:'%d %b %Y' --diff-filter=A --name-only --pretty='%n%C(yellow bold)🎂️ %ad%Creset by (%C(blue bold)%h%Creset)'
+    pa = !git pull --prune --tags
+    d = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+    c = commit
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    b = branch
+    unstage = reset HEAD --
+    last = log -1 HEAD
+
+[safe]
+	directory = *

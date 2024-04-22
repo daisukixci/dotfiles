@@ -20,6 +20,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 
 cp "${DOTFILES_DIR}/.zshrc" "${HOME}"
 cp "${DOTFILES_DIR}/.p10k.zsh" "${HOME}"
+cp "${DOTFILES_DIR}/.gitconfig" "${HOME}"
 mkdir -p "${HOME}/.env"
 
 ##### Vim configuration
@@ -69,3 +70,7 @@ then
 }'> package.json
 fi
 cd - || exit 1
+
+##### Workspace setup
+setup-workspace
+setup-repo dogweb
