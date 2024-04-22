@@ -12,7 +12,7 @@ let mapleader = '\'
 " FZF
 set rtp+=/opt/homebrew/opt/fzf
 
-nmap <silent> <leader>t :FZF<CR>
+nmap <silent> <space>f :FZF<CR>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -225,6 +225,7 @@ let g:snips_github = 'https://github.com/daisukixci'
 
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env']
 " Coc configuration
+let g:coc_global_extensions = ['coc-css', 'coc-diagnostic', 'coc-eslint', 'coc-explorer', 'coc-git', 'coc-go', 'coc-java', 'coc-json', 'coc-prettier', 'coc-pyright', 'coc-sh', 'coc-snippets', 'coc-solargraph', 'coc-tsserver', 'coc-xml', 'coc-yaml']
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
