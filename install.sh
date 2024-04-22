@@ -55,6 +55,7 @@ git clone https://github.com/vim-test/vim-test.git
 cd - || exit 1
 
 mkdir -p "$CONFIG_DIR/nvim"
+cp "${DOTFILES_DIR}/init.vim" "${CONFIG_DIR}/nvim"
 cp "${DOTFILES_DIR}/coc-settings.json" "${CONFIG_DIR}/nvim"
 mkdir -p "$CONFIG_DIR/coc/extensions"
 cd "$CONFIG_DIR/coc/extensions" || exit 1
