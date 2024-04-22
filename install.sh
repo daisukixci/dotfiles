@@ -96,6 +96,10 @@ cd - || exit 1
 ##### ASDF setup
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 
+##### Install pyenv
+curl https://pyenv.run | bash
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+
 ##### Workspace setup
 cat <<EOF > "${HOME}/first-run.sh"
 setup-workspace
