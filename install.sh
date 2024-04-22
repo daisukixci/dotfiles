@@ -12,7 +12,7 @@ apt install -y fzf
 
 ##### Shell configuration
 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh > "${HOME}/install-oh-my-zsh.sh"
-sh "${HOME}/install-oh-my-zsh.sh"
+source "${HOME}/install-oh-my-zsh.sh"
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
