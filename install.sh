@@ -4,6 +4,8 @@ DOTFILES_DIR=$(pwd)
 CONFIG_DIR=$HOME/.config
 VIM_PLUGINS_DIR=$HOME/.vim/pack/plugins/start
 
+##### Install packages
+apt install fzf
 
 ##### Shell configuration
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
