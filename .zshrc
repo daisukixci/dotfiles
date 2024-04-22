@@ -15,6 +15,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
+    asdf
     colorize
     colored-man-pages
     command-not-found
