@@ -28,7 +28,11 @@ mkdir -p "${HOME}/.env"
 cp "${DOTFILES_DIR}"/*.env "${HOME}/.env"
 
 ##### Vim configuration
-cp .vimrc "${HOME}"
+wget https://github.com/neovim/neovim/releases/download/latest/nvim-linux64.deb
+sudo dpkg -i nvim-linux64.deb
+rm nvim-linux64.deb
+
+cp "${DOTFILES_DIR}/.vimrc" "${HOME}"
 mkdir -p "$VIM_PLUGINS_DIR"
 cd "$VIM_PLUGINS_DIR" || exit 1
 git clone https://github.com/neoclide/coc.nvim.git
@@ -59,22 +63,31 @@ mkdir -p "$CONFIG_DIR/coc/extensions"
 cd "$CONFIG_DIR/coc/extensions" || exit 1
 if [ ! -f package.json ]
 then
-      echo '{
-  "dependencies":{
-    "coc-css": ">=1.3.0",
-    "coc-explorer": ">=0.22.6",
-    "coc-git": ">=2.4.7",
-    "coc-go": ">=1.1.0",
+cat << EOF > package.json
+{
+  "dependencies": {
+    "coc-css": ">=2.0.0",
+    "coc-diagnostic": ">=0.23.4",
+    "coc-git": ">=2.5.3",
     "coc-java": ">=1.5.5",
-    "coc-json": ">=1.4.1",
-    "coc-pyright": ">=1.1.220",
-    "coc-sh": ">=0.6.1",
-    "coc-snippets": ">=2.4.7",
+    "coc-json": ">=1.7.0",
+    "coc-go": ">=1.3.0",
+    "coc-pyright": ">=1.1.275",
+    "coc-snippets": ">=3.1.4",
+    "coc-solargraph": ">=1.2.4",
+    "coc-yaml": ">=1.9.0",
+    "coc-explorer": ">=0.25.4",
+    "coc-sh": ">=0.7.0",
     "coc-xml": ">=1.14.1",
-    "coc-yaml": ">=1.6.1"
-  }
-}'> package.json
+    "coc-tsserver": ">=2.1.3",
+    "coc-eslint": ">=1.7.0",
+    "coc-prettier": ">=9.3.2"
+  },
+  "lastUpdate": 1713703756777
+}
+EOF
 fi
+yarn install
 cd - || exit 1
 
 ##### Workspace setup
