@@ -11,7 +11,7 @@ echo "VIM_PLUGINS_DIR: $VIM_PLUGINS_DIR"
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 sudo apt update
-sudo apt install -y gh fzf
+sudo apt install -y gh fzf neovim python3-neovim
 
 ##### Shell configuration
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
@@ -28,10 +28,6 @@ mkdir -p "${HOME}/.env"
 cp "${DOTFILES_DIR}"/*.env "${HOME}/.env"
 
 ##### Vim configuration
-wget https://github.com/neovim/neovim/releases/download/latest/nvim-linux64.deb
-sudo dpkg -i nvim-linux64.deb
-rm nvim-linux64.deb
-
 cp "${DOTFILES_DIR}/.vimrc" "${HOME}"
 mkdir -p "$VIM_PLUGINS_DIR"
 cd "$VIM_PLUGINS_DIR" || exit 1
@@ -89,6 +85,9 @@ EOF
 fi
 yarn install
 cd - || exit 1
+
+##### ASDF setup
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 
 ##### Workspace setup
 cat <<EOF > "${HOME}/first-run.sh"
