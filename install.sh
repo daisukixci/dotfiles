@@ -16,13 +16,14 @@ sudo apt update
 sudo apt install -y gh fzf neovim python3-neovim
 
 ##### Shell configuration
-git config --list
+git config --global url.https://github.com.insteadOf git://github.com
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-completions "${ZSH_CUSTOM:=${HOME}/.oh-my-zsh/custom}/plugins/zsh-completions"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+git config --unset --global url.https://github.com.insteadOf git://github.com
 
 cp "${DOTFILES_DIR}/.zshrc" "${HOME}"
 cp "${DOTFILES_DIR}/.p10k.zsh" "${HOME}"
