@@ -10,7 +10,7 @@ filetype plugin indent on
 let mapleader = '\'
 
 " FZF
-set rtp+=/opt/homebrew/opt/fzf
+set rtp+=~/fzf
 
 nmap <silent> <space>f :FZF<CR>
 
