@@ -190,6 +190,9 @@ let g:airline_theme='wombat'
 set laststatus=2
 set encoding=utf-8
 
+" Context conf
+let g:context_enabled = 1
+
 " Doge configuration
 let g:doge_doc_standard_python = 'reST'
 let g:doge_doc_standard_php = 'phpdoc'
