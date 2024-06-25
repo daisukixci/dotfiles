@@ -55,6 +55,7 @@
     git clone https://github.com/honza/vim-snippets
     git clone https://github.com/hashivim/vim-terraform.git
     git clone https://github.com/vim-test/vim-test.git
+    git clone https://github.com/puremourning/vimspector.git
     cd - || exit 1
     cd "$VIM_PLUGINS_DIR/coc.nvim" || exit 1
     yarn install

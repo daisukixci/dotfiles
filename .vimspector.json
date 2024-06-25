@@ -1,0 +1,50 @@
+{
+  "configurations": {
+    "Python: Attach To Vim": {
+      "filetypes": ["python"],
+      "variables": {
+        "port": "5678",
+        "host": "localhost"
+      },
+      "adapter": "multi-session",
+      "configuration": {
+        "request": "attach"
+      }
+    },
+    "Python: Run current script": {
+      "filetypes": ["python"],
+      "adapter": "debugpy",
+      "configuration": {
+        "request": "launch",
+        "program": "${file}",
+        "args": ["*${args:--update-gadget-config}"],
+        "justMyCode#json": "${justMyCode:true}"
+      }
+    },
+    "Python: Run tests": {
+      "filetypes": ["python"],
+      "adapter": "debugpy",
+      "configuration": {
+        "type": "vscode-python",
+        "request": "launch",
+        "cwd": "${cwd}",
+        "console": "integratedTerminal",
+        "justMyCode": true,
+        "debugOptions": [],
+        "module": "pytest",
+        "python": "python",
+        "args": ["-v", "./tests"]
+      }
+    },
+    "Go: run current program": {
+      "filetypes": ["go"],
+      "adapter": "delve",
+      "configuration": {
+        "request": "launch",
+        "program": "${file}",
+        "mode": "debug",
+        "dlvToolPath": "$HOME/go/bin/dlv"
+      }
+    }
+  }
+}

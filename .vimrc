@@ -92,6 +92,7 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 
+set mouse=a
 set nocompatible
 set nofoldenable
 set foldmethod=indent
@@ -110,6 +111,7 @@ set colorcolumn=120
 " Change colorscheme
 "colorscheme molokai
 colorscheme gruvbox
+"colorscheme flexoki-dark
 " Enable if i want background colors too
 "if has('nvim') || has('termguicolors')
 "  set termguicolors
@@ -190,7 +192,7 @@ let g:airline_theme='wombat'
 set laststatus=2
 set encoding=utf-8
 
-" Context conf
+" Context config
 let g:context_enabled = 1
 
 " Doge configuration
@@ -414,16 +416,31 @@ let g:terraform_align=1
 map <F5> :lopen<CR>
 map <C-l> :lnext<CR>
 map <C-m> :lprevious<CR>
-nmap <silent> <leader>T :TestNearest<CR>
+nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>TA :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
+" Vimspector
+packadd! vimspector
+let g:vimspector_base_dir = expand( '$HOME/.vim/pack/plugins/start/vimspector' )
+let g:vimspector_install_gadgets = [ 'debugpy', 'delve' ]
+nmap <leader>B <Plug>VimspectorBreakpoints
+nmap <F4>	<Plug>VimspectorRestart
+nmap <F5>	<Plug>VimspectorContinue
+nnoremap <F6> :call vimspector#Reset()<CR>
+nmap <F8>	<Plug>VimspectorAddFunctionBreakpoint
+nmap <leader>F8	<Plug>VimspectorRunToCursor
+nmap <F9>	<Plug>VimspectorToggleBreakpoint
+nmap <leader>F9	<Plug>VimspectorToggleConditionalBreakpoint
+nmap <F10>	<Plug>VimspectorStepOver
+nmap <F11>	<Plug>VimspectorStepInto
+nmap <F12>	<Plug>VimspectorStepOut
+
 " Consider all .yar/.yara files to be YARA files.
 autocmd BufNewFile,BufRead *.yar,*.yara setlocal filetype=yara
 
-nmap <space>e <Cmd>CocCommand explorer<CR>
 function Ide()
     :CocCommand explorer
     :wincmd l
