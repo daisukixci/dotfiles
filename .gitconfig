@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/gaetan.piquenot/.gitignore
+	excludesfile = /home/bits/.gitignore
     #hooksPath = /usr/local/dd/global_hooks
 [url "git@github.com:DataDog"]
 	insteadOf = https://github.com/DataDog
