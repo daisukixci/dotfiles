@@ -230,3 +230,4 @@ alias cdtoolbox="cd ~/go/src/github.com/DataDog/dd-go/apps/security-defense/tool
 alias v="nvim"
 alias vim="nvim"
 alias pipupdateall="pip freeze | awk -F'==' '{print \$1}' | grep -v corpit | xargs pip install --upgrade"
+alias updatedogwebdeps="rake python:get_deps && rake python:install_local_deps"
