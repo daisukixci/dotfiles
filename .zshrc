@@ -214,6 +214,22 @@ function sls_install_plugins () {
   echo ${plugins[*]} | xargs -I {} serverless plugin install -n '{}'
 }
 
+function updategit () {
+	local dir
+	dir=${1:=.}
+	for folder in "${dir}"/**/*
+	do
+		if [[ "$folder" == './**/*' ]] || [[ -f "$folder" ]] || [[ ! -d "${folder}/.git" ]]
+		then
+			continue
+		fi
+		cd "$folder"
+		echo "Updating $folder"
+		git pull --prune --tags
+		cd - > /dev/null 2>&1
+	done
+}
+
 for env in "${HOME}/.env/"*.env; do
     source "$env"
 done
@@ -231,3 +247,4 @@ alias v="nvim"
 alias vim="nvim"
 alias pipupdateall="pip freeze | awk -F'==' '{print \$1}' | grep -v corpit | xargs pip install --upgrade"
 alias updatedogwebdeps="rake python:get_deps && rake python:install_local_deps"
+alias updatevim="updategit ~/.vim/pack/plugins"
