@@ -13,7 +13,7 @@
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
     sudo apt update
-    sudo apt install -y gh fzf neovim python3-neovim liblzma-dev
+    sudo apt install -y gh fzf neovim python3-neovim liblzma-dev tig
 
     ##### Shell configuration
     cp "${DOTFILES_DIR}/.gitconfig" "${HOME}"
