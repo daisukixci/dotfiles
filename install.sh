@@ -75,11 +75,17 @@
     curl https://pyenv.run | bash
     git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 
+    ##### Install iTerm2 shell integration
+    curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
+
     ##### Workspace setup
     cat <<EOF >"${HOME}/first-run.sh"
 setup-workspace
 setup-repo dogweb
 nvim -c 'Copilot setup'
 git config --global url."git@github.com:".insteadOf "https://github.com/"
+cat <<EOF2 > ~/dd/dogweb/.env
+source venv3/bin/activate
+EOF2
 EOF
 } >install.log 2>&1

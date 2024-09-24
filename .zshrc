@@ -235,6 +235,7 @@ for env in "${HOME}/.env/"*.env; do
 done
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias ls="ls --color=auto"
 alias ll="ls -l --color=auto"
