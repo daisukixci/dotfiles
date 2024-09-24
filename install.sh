@@ -84,7 +84,6 @@
     cd fzf || exit 1
     ./install --all
     cd - || exit 1
-    rm -rf fzf
 
     ##### Workspace setup
     cat <<EOF >"${HOME}/first-run.sh"
