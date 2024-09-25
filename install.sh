@@ -13,7 +13,7 @@
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
     sudo apt update
-    sudo apt install -y gh neovim python3-neovim liblzma-dev tig
+    sudo apt install -y gh neovim python3-neovim liblzma-dev tig libyaml-dev
 
     ##### Shell configuration
     cp "${DOTFILES_DIR}/.gitconfig" "${HOME}"
@@ -71,6 +71,8 @@
 
     ##### ASDF setup
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+    asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+    asdf install ruby 3.3.5
 
     ##### Install pyenv
     curl https://pyenv.run | bash
@@ -94,5 +96,8 @@ git config --global url."git@github.com:".insteadOf "https://github.com/"
 cat <<EOF2 > ~/dd/dogweb/.env
 source venv3/bin/activate
 EOF2
+cat <<EOF3 > ~/dd/dogweb/.tool-versions
+ruby 3.3.5
+EOF3
 EOF
 } >install.log 2>&1
