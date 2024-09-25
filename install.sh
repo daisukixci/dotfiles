@@ -92,6 +92,7 @@
 setup-workspace
 setup-repo dogweb
 nvim -c 'Copilot setup'
+gh auth login
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 cat <<EOF2 > ~/dd/dogweb/.env
 source venv3/bin/activate
