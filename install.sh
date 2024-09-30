@@ -62,9 +62,10 @@
     yarn install
     cd - || exit 1
 
-    mkdir -p "$CONFIG_DIR/nvim"
+    mkdir -p "$CONFIG_DIR/nvim/lua"
     mkdir -p "$CONFIG_DIR/coc/extensions"
     cp "${DOTFILES_DIR}/init.vim" "${CONFIG_DIR}/nvim"
+    cp "${DOTFILES_DIR}/init.lua" "${CONFIG_DIR}/nvim/lua"
     cp "${DOTFILES_DIR}/coc-settings.json" "${CONFIG_DIR}/nvim"
     extensions="coc-css coc-diagnostic coc-eslint coc-explorer coc-git coc-go coc-java coc-json coc-prettier coc-pyright coc-sh coc-snippets coc-solargraph coc-tsserver coc-xml coc-yaml"
     nvim --headless +"CocInstall -sync $extensions|qa"
