@@ -8,6 +8,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
+export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 . "$HOME/.asdf/asdf.sh"
 export PYENV_ROOT="$HOME/.pyenv"
