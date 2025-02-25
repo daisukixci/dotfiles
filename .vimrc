@@ -388,6 +388,10 @@ nmap <space>e <Cmd>CocCommand explorer<CR>
 " Coc Go
 " Add missing imports on save
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
+autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
+autocmd FileType go nmap gic :CocCommand go.impl.cursor<cr>
 
 " Black configuration
 set autoread
