@@ -14,7 +14,7 @@
     sudo add-apt-repository ppa:git-core/ppa
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
     sudo apt update
-    sudo apt install -y gh neovim python3-neovim liblzma-dev tig libyaml-dev git
+    sudo apt install -y gh neovim python3-neovim liblzma-dev tig libyaml-dev git fzf
 
     ##### Shell configuration
     cp "${DOTFILES_DIR}/.gitconfig" "${HOME}"
@@ -25,7 +25,6 @@
     git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
     git clone https://github.com/zsh-users/zsh-completions "${ZSH_CUSTOM:=${HOME}/.oh-my-zsh/custom}/plugins/zsh-completions"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-    git clone https://github.com/junegunn/fzf.git "${HOME}/.fzf"
 
     cp "${DOTFILES_DIR}/.zshrc" "${HOME}"
     cp "${DOTFILES_DIR}/.p10k.zsh" "${HOME}"
@@ -89,12 +88,6 @@
 
     ##### Install iTerm2 shell integration
     curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
-
-    ##### Install FZF
-    git clone https://github.com/junegunn/fzf
-    cd fzf || exit 1
-    ./install --all
-    cd - || exit 1
 
     ##### Install Graphite
     npm install -g @withgraphite/graphite-cli@stable
