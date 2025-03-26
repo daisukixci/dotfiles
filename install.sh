@@ -42,6 +42,8 @@
 
     ##### Install pyenv
     curl https://pyenv.run | bash
+    export PYENV_ROOT="$HOME/.pyenv"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
     git clone https://github.com/pyenv/pyenv-virtualenv.git "$(pyenv root)/plugins/pyenv-virtualenv"
 
     ##### Vim configuration
@@ -76,6 +78,7 @@
     cd - || exit 1
     cd "$VIM_PLUGINS_DIR/coc.nvim" || exit 1
     yarn install
+    npm install
     cd - || exit 1
 
     mkdir -p "$CONFIG_DIR/nvim/lua"
