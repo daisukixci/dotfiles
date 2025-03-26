@@ -10,7 +10,6 @@ fi
 # Path to your oh-my-zsh installation.
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
-. "$HOME/.asdf/asdf.sh"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -235,7 +234,6 @@ for env in "${HOME}/.env/"*.env; do
     source "$env"
 done
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias ls="ls --color=auto"

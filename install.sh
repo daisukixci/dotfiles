@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 {
     DOTFILES_DIR=${HOME}/dotfiles
     CONFIG_DIR=${HOME}/.config
@@ -59,6 +59,9 @@
     git clone https://github.com/vim-test/vim-test.git
     git clone https://github.com/puremourning/vimspector.git
     cd - || exit 1
+    cd "$VIM_PLUGINS_DIR" || exit 1
+    nvim -c "helptags coc.nvim/doc/ | q"
+    cd - || exit 1
     cd "$VIM_PLUGINS_DIR/coc.nvim" || exit 1
     yarn install
     cd - || exit 1
@@ -72,7 +75,11 @@
     nvim --headless +"CocInstall -sync $extensions|qa"
 
     ##### ASDF setup
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+    ASDF_VERSION=0.16.6
+    wget https://github.com/asdf-vm/asdf/releases/download/v${ASDF_VERSION}/asdf-v${ASDF_VERSION}-linux-amd64.tar.gz
+    tar -xvzf asdf-v$ASDF_VERSION-linux-amd64.tar.gz
+    mv asdf "${HOME}/.local/bin"
+    rm asdf-v${ASDF_VERSION}-linux-amd64.tar.gz
     asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
     asdf install ruby 3.3.5
 
