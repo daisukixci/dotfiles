@@ -31,6 +31,19 @@
     mkdir -p "${HOME}/.env"
     cp "${DOTFILES_DIR}"/*.env "${HOME}/.env"
 
+    ##### ASDF setup
+    ASDF_VERSION=0.16.6
+    wget https://github.com/asdf-vm/asdf/releases/download/v${ASDF_VERSION}/asdf-v${ASDF_VERSION}-linux-amd64.tar.gz
+    tar -xvzf asdf-v$ASDF_VERSION-linux-amd64.tar.gz
+    mv asdf "${HOME}/.local/bin"
+    rm asdf-v${ASDF_VERSION}-linux-amd64.tar.gz
+    asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+    asdf install ruby 3.3.5
+
+    ##### Install pyenv
+    curl https://pyenv.run | bash
+    git clone https://github.com/pyenv/pyenv-virtualenv.git "$(pyenv root)/plugins/pyenv-virtualenv"
+
     ##### Vim configuration
     cp "${DOTFILES_DIR}/.vimrc" "${HOME}"
     mkdir -p "$VIM_PLUGINS_DIR"
@@ -72,19 +85,6 @@
     cp "${DOTFILES_DIR}/coc-settings.json" "${CONFIG_DIR}/nvim"
     extensions="coc-css coc-diagnostic coc-eslint coc-explorer coc-git coc-go coc-java coc-json coc-prettier coc-pyright coc-sh coc-snippets coc-solargraph coc-tsserver coc-xml coc-yaml"
     nvim --headless +"CocInstall -sync $extensions|qa"
-
-    ##### ASDF setup
-    ASDF_VERSION=0.16.6
-    wget https://github.com/asdf-vm/asdf/releases/download/v${ASDF_VERSION}/asdf-v${ASDF_VERSION}-linux-amd64.tar.gz
-    tar -xvzf asdf-v$ASDF_VERSION-linux-amd64.tar.gz
-    mv asdf "${HOME}/.local/bin"
-    rm asdf-v${ASDF_VERSION}-linux-amd64.tar.gz
-    asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-    asdf install ruby 3.3.5
-
-    ##### Install pyenv
-    curl https://pyenv.run | bash
-    git clone https://github.com/pyenv/pyenv-virtualenv.git "$(pyenv root)/plugins/pyenv-virtualenv"
 
     ##### Install iTerm2 shell integration
     curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
