@@ -37,8 +37,6 @@
 	tar -xvzf asdf-v$ASDF_VERSION-linux-amd64.tar.gz
 	mv asdf "${HOME}/.local/bin"
 	rm asdf-v${ASDF_VERSION}-linux-amd64.tar.gz
-	asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-	asdf install ruby 3.3.5
 
 	##### Install pyenv
 	curl https://pyenv.run | bash
@@ -64,10 +62,7 @@ gh auth login
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 cat <<EOF2 > ~/dd/dogweb/.env
 source venv3/bin/activate
-nvim
 EOF2
-cat <<EOF3 > ~/dd/dogweb/.tool-versions
-ruby 3.3.5
-EOF3
+nvim
 EOF
 } >install.log 2>&1
