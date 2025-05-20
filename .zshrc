@@ -50,7 +50,7 @@ source $ZSH/oh-my-zsh.sh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export GITLAB_TOKEN=$(pass gitlab_token)
+#export GITLAB_TOKEN=$(pass gitlab_token)
 
 function lower {
     local to_lower="$1"
