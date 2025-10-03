@@ -56,13 +56,6 @@
 
 	##### Workspace setup
 	cat <<EOF >"${HOME}/first-run.sh"
-setup-workspace
-setup-repo dogweb
-gh auth login
-git config --global url."git@github.com:".insteadOf "https://github.com/"
-cat <<EOF2 > ~/dd/dogweb/.env
-source venv3/bin/activate
-EOF2
 nvim
 EOF
 } >install.log 2>&1
